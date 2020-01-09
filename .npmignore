@@ -1,0 +1,9 @@
+/.idea/
+/node_modules
+/coverage/
+/.prettierrc
+/.npmignore
+/test/
+/tsconfig.json
+/src/
+/tslint.json
