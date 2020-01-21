@@ -1,6 +1,6 @@
 {
   "name": "gcp-object-storage",
-  "version": "0.2.0-0",
+  "version": "0.3.0-0",
   "description": "Use Google Cloud Storage as a JSON object storage. For use with Cloud Functions.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
