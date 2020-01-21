@@ -23,12 +23,7 @@ export class ObjectWriter {
    * @param filename
    * @param options
    */
-  public async writeObject(
-    data: object,
-    targetBucket: string,
-    filename: string,
-    options?: IWriteOptions
-  ): Promise<void> {
+  public writeObject(data: object, targetBucket: string, filename: string, options?: IWriteOptions): Promise<void> {
     if (!targetBucket || !filename) {
       return Promise.reject('no targetBucket or filename provided');
     }
@@ -37,7 +32,7 @@ export class ObjectWriter {
       return Promise.reject('no data to write');
     }
 
-    await new Promise((resolve, reject) => {
+    return new Promise((resolve, reject) => {
       const writeStream = this.createWriteStream(targetBucket, addFileExtension(filename), options);
       writeStream.write(JSON.stringify(data), (error: Error | null | undefined) => {
         if (error) {

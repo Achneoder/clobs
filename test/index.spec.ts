@@ -53,6 +53,6 @@ describe('writeObject', () => {
     });
     // @ts-ignore
     const result = storageWriter.writeObject(dataObject, 'my-bucket', 'filename');
-    await expect(result).rejects.toThrowError();
+    await expect(result).rejects.toThrowError('error in writing to stream');
   });
 });
