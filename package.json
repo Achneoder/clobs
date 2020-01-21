@@ -6,6 +6,7 @@
   "types": "dist/index.d.ts",
   "scripts": {
     "build": "npx tsc",
+    "coveralls": "npm run test:cov && cat ./coverage/lcov.info | coveralls",
     "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\" \"test/**/*.ts\" \"test/**/*.js\"",
     "lint": "tslint -p tsconfig.json",
     "postversion": "git push && git push --tags",
@@ -37,6 +38,7 @@
   "devDependencies": {
     "@types/jest": "^24.0.25",
     "@types/node": "^13.1.4",
+    "coveralls": "^3.0.9",
     "husky": "^4.0.1",
     "jest": "^24.9.0",
     "prettier": "^1.19.1",
