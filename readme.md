@@ -14,8 +14,8 @@ JavaScript
 
 ```javascript
 const gcpObjectStorage = new require('gcp-object-storage');
-const ObjectReader = new gcpObjectStorage.ObjectReader();
-const ObjectWriter = new gcpObjectStorage.ObjectWriter();
+const objectReader = new gcpObjectStorage.ObjectReader();
+const objectWriter = new gcpObjectStorage.ObjectWriter();
 
 const metadata = {
   contentType: 'application/x-font-ttf',
@@ -26,12 +26,12 @@ const metadata = {
 };
 
 // providing optional metadata
-ObjectWriter().writeObject({ any: 'data' }, 'my-gcp-bucket', 'folder/to/my/file.json', metadata);
+objectWriter.writeObject({ any: 'data' }, 'my-gcp-bucket', 'folder/to/my/file.json', metadata);
 
 // without metadata
-ObjectWriter().writeObject({ any: 'data' }, 'my-gcp-bucket', 'folder/to/my/file.json');
+objectWriter.writeObject({ any: 'data' }, 'my-gcp-bucket', 'folder/to/my/file.json');
 
-ObjectReader().readObject('my-gcp-bucket', 'folder/to/my/file.json');
+objectReader.readObject('my-gcp-bucket', 'folder/to/my/file.json');
 // Object { any: "data" }
 ```
 
