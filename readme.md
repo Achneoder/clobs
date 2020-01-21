@@ -17,16 +17,17 @@ const gcpObjectStorage = new require('gcp-object-storage');
 const objectReader = new gcpObjectStorage.ObjectReader();
 const objectWriter = new gcpObjectStorage.ObjectWriter();
 
-const metadata = {
+const options = {
   contentType: 'application/x-font-ttf',
   metadata: {
     my: 'custom',
     properties: 'go here'
-  }
+  },
+  public: true
 };
 
 // providing optional metadata
-objectWriter.writeObject({ any: 'data' }, 'my-gcp-bucket', 'folder/to/my/file.json', metadata);
+objectWriter.writeObject({ any: 'data' }, 'my-gcp-bucket', 'folder/to/my/file.json', options);
 
 // without metadata
 objectWriter.writeObject({ any: 'data' }, 'my-gcp-bucket', 'folder/to/my/file.json');
@@ -38,10 +39,18 @@ objectReader.readObject('my-gcp-bucket', 'folder/to/my/file.json');
 TypeScript
 
 ```typescript
-import { ObjectWriter, ObjectReader } from 'gcp-object-storage';
+import { ObjectWriter, ObjectReader, IWriteOptions } from 'gcp-object-storage';
 
+const options: IWriteOptions = {
+  contentType: 'application/x-font-ttf',
+  metadata: {
+    my: 'custom',
+    properties: 'go here'
+  },
+  public: true
+};
 new ObjectWriter()
-  .writeObject({ any: 'data' }, 'my-gcp-bucket', 'folder/to/my/file.json')
+  .writeObject({ any: 'data' }, 'my-gcp-bucket', 'folder/to/my/file.json', options)
   .then(() => new ObjectReader().readObject('my-gcp-bucket', 'folder/to/my/file.json'))
   .then((data: any) => console.log(data));
 // Object { any: "data" }
