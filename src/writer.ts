@@ -1,3 +1,4 @@
+import { FileOptions } from '@google-cloud/storage';
 import * as gcStorage from '@google-cloud/storage';
 import { Writable } from 'stream';
 import { addFileExtension } from './helper';
@@ -19,8 +20,9 @@ export class ObjectWriter {
    * @param data
    * @param targetBucket
    * @param filename
+   * @param metaData
    */
-  public writeObject(data: object, targetBucket: string, filename: string): Promise<void> {
+  public async writeObject(data: object, targetBucket: string, filename: string, metaData?: any): Promise<void> {
     if (!targetBucket || !filename) {
       return Promise.reject('no targetBucket or filename provided');
     }
@@ -29,7 +31,7 @@ export class ObjectWriter {
       return Promise.reject('no data to write');
     }
 
-    return new Promise((resolve, reject) => {
+    await new Promise((resolve, reject) => {
       const writeStream = this.createWriteStream(targetBucket, addFileExtension(filename));
       writeStream.write(JSON.stringify(data), (error: Error | null | undefined) => {
         if (error) {
@@ -40,6 +42,13 @@ export class ObjectWriter {
         }
       });
     });
+
+    if (metaData) {
+      await this.storage
+        .bucket(targetBucket)
+        .file(filename)
+        .setMetadata(metaData);
+    }
   }
 
   private createWriteStream(targetBucket: string, filename: string): Writable {
