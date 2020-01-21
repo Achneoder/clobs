@@ -1,6 +1,8 @@
+import { CreateWriteStreamOptions, FileOptions } from '@google-cloud/storage';
 import * as gcStorage from '@google-cloud/storage';
 import { Writable } from 'stream';
 import { addFileExtension } from './helper';
+import { IWriteOptions } from './write-options';
 
 /**
  * StorageWriter for writing data objects to a GCP Storage Bucket as a JSON file.
@@ -19,8 +21,14 @@ export class ObjectWriter {
    * @param data
    * @param targetBucket
    * @param filename
+   * @param options
    */
-  public writeObject(data: object, targetBucket: string, filename: string): Promise<void> {
+  public async writeObject(
+    data: object,
+    targetBucket: string,
+    filename: string,
+    options?: IWriteOptions
+  ): Promise<void> {
     if (!targetBucket || !filename) {
       return Promise.reject('no targetBucket or filename provided');
     }
@@ -29,8 +37,8 @@ export class ObjectWriter {
       return Promise.reject('no data to write');
     }
 
-    return new Promise((resolve, reject) => {
-      const writeStream = this.createWriteStream(targetBucket, addFileExtension(filename));
+    await new Promise((resolve, reject) => {
+      const writeStream = this.createWriteStream(targetBucket, addFileExtension(filename), options);
       writeStream.write(JSON.stringify(data), (error: Error | null | undefined) => {
         if (error) {
           reject(error);
@@ -42,10 +50,10 @@ export class ObjectWriter {
     });
   }
 
-  private createWriteStream(targetBucket: string, filename: string): Writable {
+  private createWriteStream(targetBucket: string, filename: string, options?: IWriteOptions): Writable {
     return this.storage
       .bucket(targetBucket)
       .file(filename)
-      .createWriteStream();
+      .createWriteStream(options);
   }
 }

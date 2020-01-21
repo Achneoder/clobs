@@ -10,9 +10,49 @@ npm install gcp-object-storage
 
 ## Usage
 
+JavaScript
+
 ```javascript
-await new ObjectWriter().writeObject({ any: 'data' }, 'my-gcp-bucket', 'folder/to/my/file.json');
-console.log(await new ObjectReader().readObject('my-gcp-bucket', 'folder/to/my/file.json'));
+const gcpObjectStorage = new require('gcp-object-storage');
+const objectReader = new gcpObjectStorage.ObjectReader();
+const objectWriter = new gcpObjectStorage.ObjectWriter();
+
+const options = {
+  contentType: 'application/x-font-ttf',
+  metadata: {
+    my: 'custom',
+    properties: 'go here'
+  },
+  public: true
+};
+
+// providing optional metadata
+objectWriter.writeObject({ any: 'data' }, 'my-gcp-bucket', 'folder/to/my/file.json', options);
+
+// without metadata
+objectWriter.writeObject({ any: 'data' }, 'my-gcp-bucket', 'folder/to/my/file.json');
+
+objectReader.readObject('my-gcp-bucket', 'folder/to/my/file.json');
+// Object { any: "data" }
+```
+
+TypeScript
+
+```typescript
+import { ObjectWriter, ObjectReader, IWriteOptions } from 'gcp-object-storage';
+
+const options: IWriteOptions = {
+  contentType: 'application/x-font-ttf',
+  metadata: {
+    my: 'custom',
+    properties: 'go here'
+  },
+  public: true
+};
+new ObjectWriter()
+  .writeObject({ any: 'data' }, 'my-gcp-bucket', 'folder/to/my/file.json', options)
+  .then(() => new ObjectReader().readObject('my-gcp-bucket', 'folder/to/my/file.json'))
+  .then((data: any) => console.log(data));
 // Object { any: "data" }
 ```
 
