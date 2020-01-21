@@ -34,14 +34,14 @@ export class ObjectWriter {
 
     return new Promise((resolve, reject) => {
       const writeStream = this.createWriteStream(targetBucket, addFileExtension(filename), options);
-      writeStream.write(JSON.stringify(data), (error: Error | null | undefined) => {
-        if (error) {
-          reject(error);
-        } else {
-          writeStream.end();
-          resolve();
-        }
+      writeStream.on('error', err => {
+        reject(err);
       });
+      writeStream.on('finish', () => {
+        resolve();
+      });
+      writeStream.write(JSON.stringify(data));
+      writeStream.end();
     });
   }
 
