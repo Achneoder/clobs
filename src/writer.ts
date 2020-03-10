@@ -45,6 +45,13 @@ export class ObjectWriter {
     });
   }
 
+  public async deleteObject(targetBucket: string, filename: string): Promise<void> {
+    await this.storage
+      .bucket(targetBucket)
+      .file(filename)
+      .delete();
+  }
+
   private createWriteStream(targetBucket: string, filename: string, options?: IWriteOptions): Writable {
     return this.storage
       .bucket(targetBucket)
