@@ -1,11 +1,11 @@
 import { Writable } from 'stream';
-import { ObjectWriter } from '../src/index';
+import { ObjectWriter } from '../src';
 
 describe('writeObject', () => {
   const dataObject = {
+    array: [{ id: 1 }, { id: 2 }],
     key: 'value',
-    someNumber: 1234786.89,
-    array: [{ id: 1 }, { id: 2 }]
+    someNumber: 1234786.89
   };
 
   let storageWriter: ObjectWriter;
