@@ -1,8 +1,7 @@
-import { CreateWriteStreamOptions, FileOptions } from '@google-cloud/storage';
 import * as gcStorage from '@google-cloud/storage';
 import { Writable } from 'stream';
 import { addFileExtension } from './helper';
-import { IWriteOptions } from './write-options';
+import { IWriteOptions } from './interfaces/write-options';
 
 /**
  * StorageWriter for writing data objects to a GCP Storage Bucket as a JSON file.
