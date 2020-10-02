@@ -1,3 +1,10 @@
+## [0.3.3](https://github.com/Achneoder/clobs/compare/v0.3.2...v0.3.3) (2020-10-02)
+
+
+### Bug Fixes
+
+* **github:** fixes repo name ([266934f](https://github.com/Achneoder/clobs/commit/266934f545a447a648483d2f7ea88ca5756ba420))
+
 ## [0.3.2](https://github.com/Achneoder/gcp-object-storage/compare/v0.3.1...v0.3.2) (2020-09-14)
 
 
