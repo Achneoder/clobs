@@ -1,3 +1,10 @@
+## [0.3.4](https://github.com/Achneoder/clobs/compare/v0.3.3...v0.3.4) (2020-10-02)
+
+
+### Bug Fixes
+
+* **typescript:** rollback to typescript 3.8.3 ([d78b57f](https://github.com/Achneoder/clobs/commit/d78b57fac15b09c9d0653c385275f32f52767c59))
+
 ## [0.3.3](https://github.com/Achneoder/clobs/compare/v0.3.2...v0.3.3) (2020-10-02)
 
 
