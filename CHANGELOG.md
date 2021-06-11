@@ -1,3 +1,10 @@
+## [0.3.5](https://github.com/Achneoder/clobs/compare/v0.3.4...v0.3.5) (2021-06-11)
+
+
+### Bug Fixes
+
+* module updates ([9ff4a11](https://github.com/Achneoder/clobs/commit/9ff4a1121da72ce6eb30b13b4e368140d7077ece))
+
 ## [0.3.4](https://github.com/Achneoder/clobs/compare/v0.3.3...v0.3.4) (2020-10-02)
 
 
