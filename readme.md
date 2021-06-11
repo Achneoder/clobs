@@ -1,8 +1,8 @@
 # GCP Object Storage
 
 ![npm](https://img.shields.io/npm/v/gcp-object-storage)
-[![Build Status](https://travis-ci.org/Achneoder/gcp-object-storage.svg?branch=master)](https://travis-ci.org/Achneoder/gcp-object-storage)
-[![Coverage Status](https://coveralls.io/repos/github/Achneoder/gcp-object-storage/badge.svg?branch=master)](https://coveralls.io/github/Achneoder/gcp-object-storage?branch=master)
+[![Build](https://github.com/Achneoder/clobs/actions/workflows/main.yml/badge.svg)](https://github.com/Achneoder/clobs/actions/workflows/main.yml)
+[![Coverage Status](https://coveralls.io/repos/github/Achneoder/clobs/badge.svg?branch=refs/heads/master)](https://coveralls.io/github/Achneoder/clobs?branch=refs/heads/master)
 
 This package is intended for use in GCP Cloud Functions and to write and read JavaScript objects as JSON files to/from Cloud Storage.
 
